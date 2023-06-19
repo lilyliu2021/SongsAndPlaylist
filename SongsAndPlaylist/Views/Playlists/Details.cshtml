@@ -1,0 +1,76 @@
+﻿@* Previous code
+    @model SongsAndPlaylist.Models.Playlists
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Playlists</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+</div>
+*@
+
+@model PlaylistViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PlaylistName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PlaylistName)
+        </dd>
+    </dl>
+</div>
+<div>
+  
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Songs) in the Playlist
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var song in Model.Songs) {
+        <tr>
+            <td>
+                @song.Title
+            <td>
+                <a asp-controller="Songs" asp-action="Details" asp-route-id="@song.SongId">Details</a>|
+               @* <a asp-controller="PlaylistSongs" asp-action="index">Remove From List</a>*@
+               <a asp-controller="PlaylistSongs" asp-action="Delete" asp-route-id="@Model?.PlaylistId">Remove From List</a>
+                
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>
+
+
+<div>
+   <a asp-action="Edit" asp-route-id="@Model?.PlaylistId">Edit</a> |
+   <a asp-controller="PlaylistSongs" asp-action="Create" asp-route-id="@Model?.PlaylistId">Add Song To Playlist</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

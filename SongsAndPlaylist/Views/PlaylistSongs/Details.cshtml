@@ -1,0 +1,36 @@
+﻿@model SongsAndPlaylist.Models.PlaylistSong
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>PlaylistSong</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PlaylistSongId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PlaylistSongId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Playlist)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Playlist.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Song)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Song.Title)
+        </dd>
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /*id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>
